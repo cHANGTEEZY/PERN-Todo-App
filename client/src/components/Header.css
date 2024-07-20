@@ -1,0 +1,12 @@
+header {
+  background-color: rgb(179, 174, 174);
+  width: 100%;
+  h1 {
+    font-family: sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 550;
+    color: rgb(46, 52, 52);
+  }
+}
