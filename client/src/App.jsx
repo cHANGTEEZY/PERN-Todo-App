@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import EditTodo from "./components/EditTodo";
 import Header from "./components/Header";
 import InputTodo from "./components/InputTodo";
 import ListTodos from "./components/ListTodos";
 
 export default function App() {
-  useEffect(() => {
-    alert("Need to add Edit functionality", []);
-  });
+  // useEffect(() => {
+  //   alert("Need to add Edit functionality", []);
+  // });
   return (
     <>
       <Header />

@@ -1,5 +1,7 @@
+// src/ListTodos.js
 import { useEffect, useState } from "react";
 import "./ListTodos.css";
+import EditTodo from "./EditTodo";
 
 export default function ListTodos() {
   const [todos, setTodos] = useState([]);
@@ -29,9 +31,17 @@ export default function ListTodos() {
     }
   };
 
+  const updateTodo = (id, newDescription) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.todo_id === id ? { ...todo, description: newDescription } : todo
+      )
+    );
+  };
+
   useEffect(() => {
     getTodos();
-  }, []); // Correctly pass an empty dependency array to run only once
+  }, []);
 
   return (
     <>
@@ -48,7 +58,11 @@ export default function ListTodos() {
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>
-                <button className="edit">edit</button>
+                <EditTodo
+                  description={todo.description}
+                  todo_id={todo.todo_id}
+                  onSave={updateTodo}
+                />
               </td>
               <td>
                 <button
