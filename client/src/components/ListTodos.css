@@ -54,3 +54,10 @@ button.delete {
 button:hover {
   opacity: 0.8;
 }
+
+.todo-exception {
+  font-family: sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 80px;
+}

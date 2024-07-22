@@ -34,7 +34,7 @@ function App({ description, todo_id, onSave }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Edit
+        Update
       </Button>
 
       <Modal show={show} onHide={handleClose}>

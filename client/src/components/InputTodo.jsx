@@ -28,8 +28,9 @@ export default function InputTodo() {
     <>
       <section className="form-container">
         <h1>Input todo</h1>
-        <form onSubmit={onSubmitForm}>
+        <form className="form-inputTodo" onSubmit={onSubmitForm}>
           <input
+            className="todoInput"
             type="text"
             placeholder={description}
             onChange={(event) => setDescription(event.target.value)}

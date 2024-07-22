@@ -45,37 +45,41 @@ export default function ListTodos() {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos.map((todo) => (
-            <tr key={todo.todo_id}>
-              <td>{todo.description}</td>
-              <td>
-                <EditTodo
-                  description={todo.description}
-                  todo_id={todo.todo_id}
-                  onSave={updateTodo}
-                />
-              </td>
-              <td>
-                <button
-                  className="delete"
-                  onClick={() => deleteTodo(todo.todo_id)}
-                >
-                  delete
-                </button>
-              </td>
+      {todos.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {todos.map((todo) => (
+              <tr key={todo.todo_id}>
+                <td>{todo.description}</td>
+                <td>
+                  <EditTodo
+                    description={todo.description}
+                    todo_id={todo.todo_id}
+                    onSave={updateTodo}
+                  />
+                </td>
+                <td>
+                  <button
+                    className="delete"
+                    onClick={() => deleteTodo(todo.todo_id)}
+                  >
+                    delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="todo-exception">Enter a to do list to add</p>
+      )}
     </>
   );
 }
