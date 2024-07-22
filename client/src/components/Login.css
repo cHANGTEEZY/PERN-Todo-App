@@ -1,14 +1,27 @@
 .login-container {
-  width: 400px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  border: 4px solid;
+  border-image: linear-gradient(to right, #1e1614, #5b0544) 1;
+  width: 400px;
+  padding: 50px;
 }
 
-.login-container {
+.login-header {
+  font-family: sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custom-input {
+  border: 1px solid black; /* Default border color */
+  outline: none; /* Remove default outline */
+}
+
+.custom-input:focus {
+  border-color: black; /* Ensure border color stays black on focus */
+  box-shadow: none; /* Remove default box-shadow on focus */
 }
