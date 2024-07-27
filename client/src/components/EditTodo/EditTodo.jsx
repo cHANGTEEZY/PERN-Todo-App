@@ -12,7 +12,7 @@ function EditTodo({ description, todo_id, onSave }) {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/todos/${todo_id}`, {
+      const response = await fetch(`/todos/${todo_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = userData;
-    const url = "http://localhost:3000/register";
+    const url = "/register";
     console.log("Sending data:", JSON.stringify(formData));
     try {
       const response = await fetch(url, {
@@ -44,7 +44,7 @@ const Signup = () => {
         alert("Error registering: " + responseText);
       }
     } catch (error) {
-      console.error("Fetch error:", error);
+      console.error("Fetch error:", error.message);
     }
   };
 

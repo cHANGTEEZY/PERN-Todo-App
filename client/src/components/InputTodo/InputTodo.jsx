@@ -11,7 +11,7 @@ export default function InputTodo() {
       if (description === "") {
         alert("Enter a todolist");
       } else {
-        const response = await fetch("http://localhost:3000/todos", {
+        const response = await fetch(`/todos`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -25,6 +25,7 @@ export default function InputTodo() {
 
         console.log(response);
       }
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
