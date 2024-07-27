@@ -1,0 +1,31 @@
+.form-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-inputTodo {
+  margin-top: 40px;
+  display: flex;
+  gap: 6px;
+}
+
+.todoInput {
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid hsl(0, 0%, 80%);
+  background-color: #f0f0f0; /* Light gray background color */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  outline: none;
+}
+
+.add-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid hsl(0, 0%, 90%);
+  cursor: pointer;
+  color: rgb(115, 115, 117);
+}
