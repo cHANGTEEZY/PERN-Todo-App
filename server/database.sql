@@ -13,5 +13,4 @@ create table user_detail(
 )
 
 
--- \dt to list all tables
 

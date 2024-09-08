@@ -18,12 +18,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || "*", // Update this for production
+  })
+);
 app.use(bodyParser.json());
 
 // Serve static files from the React app
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/dist")));
+  app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 // Root route
@@ -31,9 +35,8 @@ app.get("/", (req, res) => {
   res.send("Hello world");
 });
 
-// Create a todo
+// CRUD operations for todos
 app.post("/todos", async (req, res) => {
-  console.log("received post request to /todos");
   try {
     const { description } = req.body;
     const newTodo = await pool.query(
@@ -47,7 +50,6 @@ app.post("/todos", async (req, res) => {
   }
 });
 
-// Get all todos
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
@@ -58,7 +60,6 @@ app.get("/todos", async (req, res) => {
   }
 });
 
-// Get specific todo
 app.get("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,7 +73,6 @@ app.get("/todos/:id", async (req, res) => {
   }
 });
 
-// Update a todo
 app.put("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -88,7 +88,6 @@ app.put("/todos/:id", async (req, res) => {
   }
 });
 
-// Delete a todo
 app.delete("/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -107,9 +106,15 @@ app.use("/signin", signin);
 // Catch-all handler to redirect all requests to the React app's index.html
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error("Global error handler:", err.message);
+  res.status(500).send("Server error: " + err.message);
+});
 
 // Run server on specified PORT
 app.listen(PORT, () => {
