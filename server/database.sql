@@ -1,9 +1,9 @@
 create database perntodo;
 
-create table todo(
-    todo_id  SERIAL PRIMARY KEY,
-    description varchar(255)
-)
+    create table todo(
+        todo_id  SERIAL PRIMARY KEY,
+        description varchar(255)
+    )
 
 -- create table user_detail(
 --     user_id SERIAL PRIMARY KEY,

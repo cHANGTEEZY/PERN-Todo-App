@@ -1,20 +1,16 @@
-import pg from "pg";
+import { Pool } from "pg";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const devConfig = {
-  user: process.env.PG_USER,
-  password: String(process.env.PG_PASSWORD),
-  host: process.env.PG_HOST,
-  port: process.env.PG_PORT,
-  database: process.env.PG_DATABASE,
-};
+pool = new Pool({
+  connectionString:
+    "postgres://default:x73lfIXKqAGP@ep-wild-bird-a1u08ugn-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
+});
 
-const prodConfig = {
-  connectionString: process.env.DATABASE_URL,
-};
+pool.connect((err) => {
+  if (err) throw err;
+  console.log("Connected");
+});
 
-export const pool = new pg.Pool(
-  process.env.NODE_ENV === "production" ? prodConfig : devConfig
-);
+module.exports = pool;
