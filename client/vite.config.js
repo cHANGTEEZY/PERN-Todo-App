@@ -5,9 +5,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/todos": "http://localhost:3000",
-      "/register": "http://localhost:3000",
-      "/signin": "http://localhost:3000",
+      "/todos": "https://changteezy.onrender.com",
+      "/register": "https://changteezy.onrender.com",
+      "/signin": "https://changteezy.onrender.com",
     },
   },
   build: {
